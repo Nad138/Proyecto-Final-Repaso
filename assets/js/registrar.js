@@ -41,13 +41,13 @@ window.onload = function(){
              return false;
           }
     }
-    var email = function(){
+  var email = function(){
     var mail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; //  w: alfanumérico, acepta . y -, y el ultimo sólo dos o tres letras.
     if(!mail.test(correo)){
             this.nextElementSibling.nextElementSibling.innerText = "*El correo ingresado no es un formato válido";
           }
     }
-    var passw = function(){
+  var passw = function(){
     var password = /^\w{6,20}$/;
     if (!password.test(clave)){
           this.nextElementSibling.nextElementSibling.innerText = "*La contraseña debe tener entre 6 y 20 caracteres";
@@ -57,5 +57,16 @@ window.onload = function(){
   apellido.onkeypress = letras;
   correo.onkeypress = email;
   clave.onkeypress = passw;
+  var inputs = document.getElementsByClassName("input-registro");
+  var validarInput = function(){
+   if(this.getAttribute("type")=="text"){
+          var info = this.value.split(" ");
+          var mayuscula = "";
+          for(var i= 0; i<info.length; i++){
+                mayuscula += info[i].charAt(0).toUpperCase() + info[i].substring(1).toLowerCase() + " ";
+            }
+         this.value = mayuscula;
+       }
+     }
 
 }
